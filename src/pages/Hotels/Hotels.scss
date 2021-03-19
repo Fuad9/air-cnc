@@ -1,0 +1,25 @@
+.hotels {
+	.features {
+		display: flex;
+		justify-content: space-between;
+
+		h6 {
+			border: 1px solid lightgray;
+			border-radius: 2rem;
+			padding: 0.6rem;
+			cursor: pointer;
+		}
+	}
+
+	.hotel-list {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid lightgray;
+		margin: 1rem 0;
+		padding: 1rem 0;
+
+		img {
+			margin-right: 1rem;
+		}
+	}
+}
