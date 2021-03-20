@@ -1,20 +1,5 @@
-@import "../../variables.scss";
-
 .guest-count-card {
-	// border: 1px solid lightgray;
-	// box-shadow: 5px 5px 5px lightgray;
-
-	.date-picker {
-		display: flex;
-		align-items: center;
-		font-size: $brandText3;
-
-		> div input {
-			padding: 1.5rem 1rem;
-			border: none;
-			outline: none;
-		}
-	}
+	padding: 2rem;
 
 	.dropdown-area {
 		> div {

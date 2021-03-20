@@ -1,0 +1,18 @@
+.menu-icon {
+	display: none;
+}
+
+.menu-appbar {
+	background-color: #fff;
+	height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+	.nav-menu {
+		display: none !important;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+}

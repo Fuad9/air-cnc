@@ -1,7 +1,3 @@
-// This example shows you how to set up React Stripe.js and use Elements.
-// Learn how to accept a payment using the official Stripe docs.
-// https://www.stripe.com/docs/payments/integration-builder
-
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
@@ -102,8 +98,6 @@ const CheckoutForm = () => {
 		event.preventDefault();
 
 		if (!stripe || !elements) {
-			// Stripe.js has not loaded yet. Make sure to disable
-			// form submission until Stripe.js has loaded.
 			return;
 		}
 
@@ -154,7 +148,7 @@ const CheckoutForm = () => {
 			<ResetButton onClick={reset} />
 		</div>
 	) : (
-		<form className="Form border p-4 mt-5" onSubmit={handleSubmit}>
+		<form className="Form border p-4" onSubmit={handleSubmit}>
 			<div className="d-flex justify-content-between">
 				<h6 className="text-bold">
 					<img src={circle} alt="" /> Credit Card
@@ -215,24 +209,26 @@ const ELEMENTS_OPTIONS = {
 	],
 };
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
 	"pk_test_51HZzG7ArBFgLFbtiRdd2xd1ftOBToblWfu8yNFw9qvtmJeqCp9HIilMWihuB29x3sV7w8HX0Oy0cFIgE0Z11N3eV00xAHj7241"
 );
 
 const ProcessPayment = () => {
 	return (
-		<div className="AppWrapper row">
-			<div className="col-md-6">
-				<Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-					<CheckoutForm />
-				</Elements>
+		<section className="AppWrapper container">
+			<div className="split">
+				<div>
+					<h3>Payment Selection</h3>
+					<Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
+						<CheckoutForm />
+					</Elements>
+				</div>
+
+				<div>
+					<PricingCard />
+				</div>
 			</div>
-			<div className="col-md-6">
-				<PricingCard />
-			</div>
-		</div>
+		</section>
 	);
 };
 

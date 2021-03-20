@@ -1,4 +1,4 @@
-const hotelsData = [
+const experiencesData = [
 	{
 		id: 1,
 		name: "NIGHT- NEW WORK",
@@ -37,4 +37,4 @@ const hotelsData = [
 	},
 ];
 
-export default hotelsData;
+export default experiencesData;

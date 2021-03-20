@@ -1,0 +1,16 @@
+.date-picker {
+	display: flex;
+	align-items: center;
+	font-size: 1.125rem;
+
+	> div {
+		display: flex;
+		align-items: center;
+		padding: 1.5rem 1rem;
+
+		input {
+			border: none;
+			outline: none;
+		}
+	}
+}

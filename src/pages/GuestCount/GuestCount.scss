@@ -1,8 +1,5 @@
 .search-area {
-	border: 1px solid lightgray;
-	padding: 1rem;
-
-	.search-box {
+	input {
 		border: none;
 		outline: none;
 	}
@@ -13,19 +10,16 @@
 		margin-bottom: 0.7rem;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 	}
 
 	.btn-action {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 
-		.decrement-btn,
-		.increment-btn {
-			width: 2rem;
-			font-size: 1.3rem;
-			border: none;
-			outline: none;
-			background: transparent;
+		img {
+			cursor: pointer;
 		}
 
 		span {
@@ -33,18 +27,16 @@
 			font-size: 1.3rem;
 		}
 	}
-}
 
-.submit-btn {
-	display: flex;
-	justify-content: flex-end;
-
-	button {
-		border: 1px solid greenyellow;
-		border-radius: 0.8rem;
-		color: greenyellow;
-		text-transform: uppercase;
-		padding: 0.8rem 1.8rem;
-		background: transparent;
+	.submit-btn {
+		button {
+			margin-left: auto;
+			border: 1px solid #2bde8c;
+			border-radius: 0.8rem;
+			color: #2bde8c;
+			text-transform: uppercase;
+			padding: 0.8rem 1.8rem;
+			background: transparent;
+		}
 	}
 }

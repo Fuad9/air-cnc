@@ -2,31 +2,64 @@ import React, { useState } from "react";
 import { enGB } from "date-fns/locale";
 import { DatePicker } from "react-nice-dates";
 import "react-nice-dates/build/style.css";
+import calendar from "../images/photos/calendar-outline.png";
+//styles
+import "./Dates.scss";
 
-const CurrentDate = ({ data, dateHandler, type }) => {
-	const [date, setDate] = useState(data);
+const CurrentDate = () => {
+	const [date, setDate] = useState(new Date());
 
-	const handleChange = (e, type) => {
+	const handleChange = (e) => {
 		setDate(e);
-		dateHandler(e, type);
 	};
 
 	return (
 		<div style={{ display: "flex" }}>
-			<DatePicker
-				date={date}
-				onDateChange={(e) => handleChange(e, type)}
-				locale={enGB}
-				format="dd/MM/yyyy"
-			>
-				{({ inputProps, focused }) => (
-					<input
-						className={"input" + (focused ? " -focused" : "")}
-						style={{ width: 150 }}
-						{...inputProps}
-					/>
-				)}
-			</DatePicker>
+			<div className="date-picker">
+				<div className="input-date shadow">
+					<DatePicker
+						date={date}
+						onDateChange={(e) => handleChange(e)}
+						locale={enGB}
+						format="dd/MM/yyyy"
+					>
+						{({ inputProps, focused }) => (
+							<>
+								<label htmlFor="input">Arrival</label>
+								<br />
+								<input
+									className={"input" + (focused ? " -focused" : "")}
+									style={{ width: "100%" }}
+									{...inputProps}
+								/>
+							</>
+						)}
+					</DatePicker>
+					<img src={calendar} alt="" />
+				</div>
+				<i class="bx bx-right-arrow-alt"></i>
+				<div className="input-date shadow">
+					<DatePicker
+						date={date}
+						onDateChange={(e) => handleChange(e)}
+						locale={enGB}
+						format="dd/MM/yyyy"
+					>
+						{({ inputProps, focused }) => (
+							<>
+								<label htmlFor="input">Departure</label>
+								<br />
+								<input
+									className={"input" + (focused ? " -focused" : "")}
+									style={{ width: "100%" }}
+									{...inputProps}
+								/>
+							</>
+						)}
+					</DatePicker>
+					<img src={calendar} alt="" />
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -8,16 +8,18 @@ import Tabs from "./Tabs";
 
 const Routes = () => {
 	return (
-		<Router>
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/home" component={Home} />
-				<Route path="/placeDetails" component={PlaceDetails} />
-				<Route path="/hotels" component={Hotels} />
-				<Route path="/tabs" component={Tabs} />
-				<Route path="/auth" component={Auth} />
-			</Switch>
-		</Router>
+		<>
+			<Router>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route path="/home" component={Home} />
+					<Route path="/placeDetails" component={PlaceDetails} />
+					<Route path="/hotels" component={Hotels} />
+					<Route path="/tabs" component={Tabs} />
+					<Route path="/auth" component={Auth} />
+				</Switch>
+			</Router>
+		</>
 	);
 };
 
