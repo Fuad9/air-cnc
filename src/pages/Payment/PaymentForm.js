@@ -210,8 +210,6 @@ const ELEMENTS_OPTIONS = {
 
 const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_API}`);
 
-console.log(process.env.REACT_APP_STRIPE_API);
-
 const ProcessPayment = () => {
 	return (
 		<section className="AppWrapper container">
