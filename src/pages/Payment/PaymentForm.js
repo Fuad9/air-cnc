@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, Elements, useElements, useStripe } from "@stripe/react-stripe-js";
-import "./PaymentForm.scss";
 //images
 import circle from "../../images/photos/radio_active.png";
 import paypal from "../../images/photos/Bitmap.png";
 import card1 from "../../images/photos/credit-cards_mastercard.png";
 import card2 from "../../images/photos/credit-cards_visa.png";
 import card3 from "../../images/photos/credit-cards_amex.png";
+//components
 import PricingCard from "../../components/PricingCard";
+//styles
+import "./PaymentForm.scss";
+require("dotenv").config();
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -89,8 +92,6 @@ const CheckoutForm = () => {
 	const [processing, setProcessing] = useState(false);
 	const [paymentMethod, setPaymentMethod] = useState(null);
 	const [billingDetails, setBillingDetails] = useState({
-		email: "",
-		phone: "",
 		name: "",
 	});
 
@@ -130,8 +131,6 @@ const CheckoutForm = () => {
 		setProcessing(false);
 		setPaymentMethod(null);
 		setBillingDetails({
-			email: "",
-			phone: "",
 			name: "",
 		});
 	};
@@ -209,9 +208,9 @@ const ELEMENTS_OPTIONS = {
 	],
 };
 
-const stripePromise = loadStripe(
-	"pk_test_51HZzG7ArBFgLFbtiRdd2xd1ftOBToblWfu8yNFw9qvtmJeqCp9HIilMWihuB29x3sV7w8HX0Oy0cFIgE0Z11N3eV00xAHj7241"
-);
+const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_API}`);
+
+console.log(process.env.REACT_APP_STRIPE_API);
 
 const ProcessPayment = () => {
 	return (

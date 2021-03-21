@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+//styles
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,13 +9,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
 import { Drawer } from "@material-ui/core";
-import { NavLink } from "react-router-dom";
 
 import "./NavBar.scss";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
+		width: "min(90%, 70.5rem)",
+		margin: "0 auto",
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
@@ -41,7 +44,7 @@ export default function NavBar() {
 
 	return (
 		<div className={classes.root}>
-			<AppBar position="static" style={{ backgroundColor: "#fff" }}>
+			<AppBar position="static" style={{ backgroundColor: "#fff", boxShadow: "none" }}>
 				<Toolbar className="d-flex justify-content-end">
 					<div className="nav-menu d-flex align-items-center">
 						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/home">
@@ -49,30 +52,22 @@ export default function NavBar() {
 								Host your home
 							</Typography>
 						</NavLink>
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="apps">
+						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/home">
 							<Typography variant="h6" className={classes.title}>
 								Host your experience
 							</Typography>
 						</NavLink>
-						<NavLink
-							activeStyle={styles.textActiveStyle}
-							style={styles.textStyle}
-							to="advertise"
-						>
+						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/home">
 							<Typography variant="h6" className={classes.title}>
 								Help
 							</Typography>
 						</NavLink>
-						<NavLink
-							activeStyle={styles.textActiveStyle}
-							style={styles.textStyle}
-							to="/about"
-						>
+						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/auth">
 							<Typography variant="h6" className={classes.title}>
 								Log in
 							</Typography>
 						</NavLink>
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/jobs">
+						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/auth">
 							<Typography variant="h6" className={classes.title}>
 								<button style={{ borderRadius: "3rem" }}>Sign up</button>
 							</Typography>
@@ -102,35 +97,35 @@ export default function NavBar() {
 									style={styles.textStyle}
 									to="/home"
 								>
-									<MenuItem onClick={() => setOpen(false)}>Home</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>Host your home</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}
 									style={styles.textStyle}
-									to="/apps"
+									to="/home"
 								>
-									<MenuItem onClick={() => setOpen(false)}>Our Apps</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>Host your experience</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}
 									style={styles.textStyle}
-									to="/advertise"
+									to="/home"
 								>
-									<MenuItem onClick={() => setOpen(false)}>Advertise with us</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>Help</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}
 									style={styles.textStyle}
-									to="/about"
+									to="/auth"
 								>
-									<MenuItem onClick={() => setOpen(false)}>About us</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>Login</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}
 									style={styles.textStyle}
-									to="/jobs"
+									to="/auth"
 								>
-									<MenuItem onClick={() => setOpen(false)}>Jobs</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>Sign up</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}

@@ -9,6 +9,7 @@ import hotel2 from "../../images/photos/the-atlantic-apartments-1br-classical-ki
 import hotel3 from "../../images/photos/photo-1.png";
 //components
 import NavBar from "../../components/NavBar";
+import Maps from "../../components/Maps";
 
 const Hotels = () => {
 	const styles = {
@@ -129,7 +130,9 @@ const Hotels = () => {
 					</div>
 
 					{/* Google map ============= */}
-					<div className=""></div>
+					<div style={{ width: "100%", height: "100vh" }}>
+						<Maps />
+					</div>
 				</div>
 			</section>
 		</>

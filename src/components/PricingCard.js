@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import { Dropdown, Button } from "react-bootstrap";
 //components
-import Dates from "./Dates";
+import StartingDate from "./StartingDate";
+import EndingDate from "./EndingDate";
 //utilities
 import { getFromDatabase } from "../utilities/storageManager";
+//styles
+import "./PricingCard.scss";
+//images
+import room from "../images/photos/photo-1522708323590-d24dbb6b0267.png";
 
 const PricingCard = () => {
 	const [data, setData] = useState({});
 
+	/*total guest count from localStorage ==================*/
 	const totalGuests = data.adults + data.childs + data.babies;
 
 	/* Retrieving guests data from the localStorage ================= */
@@ -19,16 +25,38 @@ const PricingCard = () => {
 
 	return (
 		<>
-			<div className="shadow p-3">
-				<span className="d-flex">
-					<StarRatingComponent name="rate1" starCount={1} starColor={"#40e37c"} value={1} />
-					<p>
-						<span className="font-bold">4.9</span> (20 reviews)
-					</p>
-				</span>
+			<div className="pricing-card shadow p-3">
+				<div className="d-flex">
+					<span>
+						<h3>Light bright airy stylish apt & safe peaceful stay</h3>
 
-				<h6>Dates</h6>
-				<Dates />
+						<span className="d-flex">
+							<StarRatingComponent
+								name="rate1"
+								starCount={1}
+								starColor={"#40e37c"}
+								value={1}
+							/>
+							<p>
+								<span className="font-bold">4.9</span> (20 reviews)
+							</p>
+						</span>
+					</span>
+					<img className="w-25" src={room} alt="" />
+				</div>
+
+				<div className="mb-5">
+					<h6>Dates</h6>
+					<div className="date-picker">
+						<div className="shadow input-date">
+							<StartingDate />
+						</div>
+						<i class="bx bx-right-arrow-alt"></i>
+						<div className="shadow input-date">
+							<EndingDate />
+						</div>
+					</div>
+				</div>
 
 				<Dropdown className="dropdown-area mt-3">
 					<h6>Guests</h6>

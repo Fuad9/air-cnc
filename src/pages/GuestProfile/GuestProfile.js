@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PricingCard from "../../components/PricingCard";
 import men from "../../images/photos/asset-3.png";
 
@@ -20,7 +21,9 @@ const GuestProfile = () => {
 							</span>
 						</div>
 						<textarea className="mt-4" name="" id="" cols="60" rows="10"></textarea> <br />
-						<button>Continue</button>
+						<Link to="/tabs/payment">
+							<button>Continue</button>
+						</Link>
 					</div>
 
 					<div>

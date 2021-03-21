@@ -1,0 +1,31 @@
+.pricing-card {
+	.dropdown-area {
+		> div {
+			border: 1px solid lightgray;
+			border-radius: 1rem;
+			padding: 0.7rem;
+		}
+
+		.guests-item {
+			border-bottom: 1px solid #dfdfdf;
+
+			&:last-child {
+				border: none;
+			}
+		}
+	}
+
+	.pricing-area {
+		div {
+			border-bottom: 1px solid #dfdfdf;
+			padding: 10px 20px 5px 0;
+
+			&:last-child {
+				border: none;
+				h6 {
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}

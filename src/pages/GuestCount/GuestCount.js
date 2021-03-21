@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+//utilities
 import { addToDatabase } from "../../utilities/storageManager";
-import Dates from "../../components/Dates";
+//components
+import StartingDate from "../../components/StartingDate";
+import EndingDate from "../../components/EndingDate";
 //styles
 import "./GuestCount.scss";
 //images
@@ -8,6 +11,7 @@ import minus from "../../images/photos/minus-outline.png";
 import plus from "../../images/photos/plus-outline.png";
 import search from "../../images/photos/search-outline.png";
 import { Link } from "react-router-dom";
+import calendar from "../../images/photos/calendar-outline.png";
 
 const GuestCount = () => {
 	const [adultsCount, setAdultsCount] = useState(0);
@@ -58,13 +62,22 @@ const GuestCount = () => {
 				<h4 className="text-uppercase">location</h4>
 				<input
 					type="text"
-					className="shadow w-100 py-4"
+					className="shadow w-100 p-4"
 					placeholder="Add city, landmark or address"
 				/>
 			</div>
 
 			<div className="my-5">
-				<Dates />
+				<div className="date-picker">
+					<div className="shadow input-date">
+						<StartingDate />
+						<img src={calendar} alt="" />
+					</div>
+					<div className="shadow input-date">
+						<EndingDate />
+						<img src={calendar} alt="" />
+					</div>
+				</div>
 			</div>
 
 			<div className="guest-count shadow p-5">
@@ -111,15 +124,17 @@ const GuestCount = () => {
 				</div>
 
 				<div className="submit-btn">
-					<button
-						onClick={() => {
-							handleAddGuests("adults", adultsCount);
-							handleAddChilds("childs", childsCount);
-							handleAddBabies("babies", babiesCount);
-						}}
-					>
-						Apply
-					</button>
+					<Link to="/placeDetails">
+						<button
+							onClick={() => {
+								handleAddGuests("adults", adultsCount);
+								handleAddChilds("childs", childsCount);
+								handleAddBabies("babies", babiesCount);
+							}}
+						>
+							Apply
+						</button>
+					</Link>
 				</div>
 			</div>
 

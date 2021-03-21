@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //images
 import childs from "../../images/photos/ic_child_friendly_48px.png";
 import pets from "../../images/photos/ic_pets_48px.png";
 import smoking from "../../images/photos/ic_smoking_rooms_48px.png";
 import forbidden from "../../images/photos/forbidden.png";
 import downArrow from "../../images/photos/arrow-ios-downward-outline-2.png";
+//components
 import PricingCard from "../../components/PricingCard";
 
 const HouseRules = () => {
@@ -55,7 +57,10 @@ const HouseRules = () => {
 						<h4 style={{ color: "#0377FF", cursor: "pointer" }}>
 							Read more <img src={downArrow} alt="" />
 						</h4>
-						<button>Agree and continue</button>
+
+						<Link to="/tabs/guestProfile">
+							<button>Agree and continue</button>
+						</Link>
 					</div>
 
 					<div>

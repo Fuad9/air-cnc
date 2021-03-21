@@ -1,9 +1,11 @@
 import React from "react";
+import StarRatingComponent from "react-star-rating-component";
+//data
 import experiencesData from "../../Data/experiencesData";
 import homesData from "../../Data/HomesData";
-import StarRatingComponent from "react-star-rating-component";
 //styles
 import "./Home.scss";
+//components
 import GuestCount from "../GuestCount/GuestCount";
 import NavBar from "../../components/NavBar";
 
@@ -19,10 +21,10 @@ const Home = () => {
 
 					<div>
 						<h2>Experiences</h2>
-						<div className="d-flex">
+						<div className="row d-flex">
 							{experiencesData.map((dt) => (
-								<div className="img-container">
-									<div className="imga">
+								<div className="experiences-data-container col-6 col-sm-6 col-md-6 col-lg-3">
+									<div className="experiences-data">
 										<div className="">
 											<img src={dt.imageUrl} alt="" />
 										</div>
@@ -44,11 +46,11 @@ const Home = () => {
 						</div>
 
 						<h2>Homes</h2>
-						<div className="d-flex">
+						<div className="row d-flex">
 							{homesData.map((dt) => (
-								<div className="imga-container">
-									<div className="imga">
-										<div className="">
+								<div className="homes-data-container col-12 col-sm-12 col-md-6 col-lg-4">
+									<div className="homes-data">
+										<div>
 											<img src={dt.imageUrl} alt="" />
 										</div>
 										<h6>{dt.name}</h6>

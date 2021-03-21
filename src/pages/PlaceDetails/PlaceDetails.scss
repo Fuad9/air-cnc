@@ -1,47 +1,6 @@
 .guest-count-card {
 	padding: 2rem;
 
-	.dropdown-area {
-		> div {
-			border: 1px solid lightgray;
-			border-radius: 1rem;
-			padding: 0.7rem 0;
-
-			Button {
-				margin-right: 15rem;
-			}
-		}
-
-		.guests-item {
-			border-bottom: 1px solid #dfdfdf;
-
-			&:last-child {
-				border: none;
-			}
-		}
-	}
-
-	.pricing-area {
-		margin-top: 15px;
-		max-width: 15rem;
-
-		div {
-			border-bottom: 1px solid #dfdfdf;
-			padding: 10px 20px 5px 0;
-			h5 {
-				font-size: 16px;
-				font-weight: 500;
-			}
-			&:last-child {
-				border: none;
-				h5,
-				h6 {
-					font-weight: 600;
-				}
-			}
-		}
-	}
-
 	.reserve {
 		button {
 			width: 100%;

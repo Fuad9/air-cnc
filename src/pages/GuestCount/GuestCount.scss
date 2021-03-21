@@ -6,6 +6,8 @@
 }
 
 .guest-count {
+	font-weight: bold;
+
 	> div {
 		margin-bottom: 0.7rem;
 		display: flex;
@@ -29,8 +31,10 @@
 	}
 
 	.submit-btn {
+		display: flex;
+		justify-content: flex-end;
+
 		button {
-			margin-left: auto;
 			border: 1px solid #2bde8c;
 			border-radius: 0.8rem;
 			color: #2bde8c;

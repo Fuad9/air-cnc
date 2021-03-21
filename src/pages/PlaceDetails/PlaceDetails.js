@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //styles
 import "./PlaceDetails.scss";
 //images
@@ -6,9 +7,10 @@ import home from "../../images/photos/home.png";
 import checkmark from "../../images/photos/checkmark-square-2.png";
 import sparking from "../../images/photos/solid.png";
 import men from "../../images/photos/single-01.png";
+import building from "../../images/photos/photo-1560347876-aeef00ee58a1.png";
+import room from "../../images/photos/photo-1522708323590-d24dbb6b0267.jpeg";
 //components
 import PricingCard from "../../components/PricingCard";
-import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 
 const PlaceDetails = () => {
@@ -16,6 +18,11 @@ const PlaceDetails = () => {
 		<>
 			<NavBar />
 			<section className="container">
+				<div className="d-flex w-100">
+					<img className="w-50" src={building} alt="" />
+					<img className="w-50" src={room} alt="" />
+				</div>
+
 				<div className="split">
 					<div>
 						<h1 className="mb-5">Light bright airy stylish apt & safe peaceful stay</h1>
@@ -54,7 +61,7 @@ const PlaceDetails = () => {
 						<PricingCard />
 
 						<div className="reserve">
-							<Link to="/tabs">
+							<Link to="/tabs/houseRules">
 								<button>Reserve</button>
 							</Link>
 						</div>

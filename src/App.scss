@@ -68,4 +68,21 @@ body {
 			margin-left: 2em;
 		}
 	}
+
+	.date-picker {
+		display: flex;
+		align-items: center;
+		font-size: 1.125rem;
+
+		.input-date {
+			padding: 1.5rem 1rem;
+			display: flex;
+			align-items: center;
+
+			input {
+				border: none;
+				outline: none;
+			}
+		}
+	}
 }
