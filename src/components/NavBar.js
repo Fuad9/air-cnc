@@ -11,12 +11,14 @@ import { useState } from "react";
 import { Drawer } from "@material-ui/core";
 
 import "./NavBar.scss";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
 		width: "min(90%, 70.5rem)",
 		margin: "0 auto",
+		borderBottom: "2px solid green",
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
@@ -33,7 +35,6 @@ const styles = {
 		textDecoration: "none",
 	},
 	textStyle: {
-		color: "#000",
 		textDecoration: "none",
 	},
 };
@@ -41,37 +42,59 @@ const styles = {
 export default function NavBar() {
 	const classes = useStyles();
 	const [open, setOpen] = useState(false);
+	const users = useSelector((state) => state.users);
 
 	return (
 		<div className={classes.root}>
-			<AppBar position="static" style={{ backgroundColor: "#fff", boxShadow: "none" }}>
+			<AppBar
+				position="static"
+				style={{ backgroundColor: "transparent", boxShadow: "none" }}
+			>
 				<Toolbar className="d-flex justify-content-end">
 					<div className="nav-menu d-flex align-items-center">
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/home">
+						<NavLink
+							activeStyle={styles.textActiveStyle}
+							style={styles.textStyle}
+							to="/home"
+						>
 							<Typography variant="h6" className={classes.title}>
 								Host your home
 							</Typography>
 						</NavLink>
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/home">
+						<NavLink
+							activeStyle={styles.textActiveStyle}
+							style={styles.textStyle}
+							to="/home"
+						>
 							<Typography variant="h6" className={classes.title}>
 								Host your experience
 							</Typography>
 						</NavLink>
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/home">
+						<NavLink
+							activeStyle={styles.textActiveStyle}
+							style={styles.textStyle}
+							to="/home"
+						>
 							<Typography variant="h6" className={classes.title}>
 								Help
 							</Typography>
 						</NavLink>
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/auth">
+
+						{Object.keys(users).length === 0 ? (
+							<NavLink
+								activeStyle={styles.textActiveStyle}
+								style={styles.textStyle}
+								to="/auth"
+							>
+								<Typography variant="h6" className={classes.title}>
+									<button style={{ borderRadius: "3rem" }}>Login</button>
+								</Typography>
+							</NavLink>
+						) : (
 							<Typography variant="h6" className={classes.title}>
-								Log in
+								{users.displayName}
 							</Typography>
-						</NavLink>
-						<NavLink activeStyle={styles.textActiveStyle} style={styles.textStyle} to="/auth">
-							<Typography variant="h6" className={classes.title}>
-								<button style={{ borderRadius: "3rem" }}>Sign up</button>
-							</Typography>
-						</NavLink>
+						)}
 					</div>
 
 					<div className="menu-icon">
@@ -97,14 +120,18 @@ export default function NavBar() {
 									style={styles.textStyle}
 									to="/home"
 								>
-									<MenuItem onClick={() => setOpen(false)}>Host your home</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>
+										Host your home
+									</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}
 									style={styles.textStyle}
 									to="/home"
 								>
-									<MenuItem onClick={() => setOpen(false)}>Host your experience</MenuItem>
+									<MenuItem onClick={() => setOpen(false)}>
+										Host your experience
+									</MenuItem>
 								</NavLink>
 								<NavLink
 									activeStyle={styles.textActiveStyle}
@@ -113,27 +140,20 @@ export default function NavBar() {
 								>
 									<MenuItem onClick={() => setOpen(false)}>Help</MenuItem>
 								</NavLink>
-								<NavLink
-									activeStyle={styles.textActiveStyle}
-									style={styles.textStyle}
-									to="/auth"
-								>
-									<MenuItem onClick={() => setOpen(false)}>Login</MenuItem>
-								</NavLink>
-								<NavLink
-									activeStyle={styles.textActiveStyle}
-									style={styles.textStyle}
-									to="/auth"
-								>
-									<MenuItem onClick={() => setOpen(false)}>Sign up</MenuItem>
-								</NavLink>
-								<NavLink
-									activeStyle={styles.textActiveStyle}
-									style={styles.textStyle}
-									to="/helps"
-								>
-									<MenuItem onClick={() => setOpen(false)}>Help & faq</MenuItem>
-								</NavLink>
+
+								{Object.keys(users).length === 0 ? (
+									<NavLink
+										activeStyle={styles.textActiveStyle}
+										style={styles.textStyle}
+										to="/auth"
+									>
+										<MenuItem onClick={() => setOpen(false)}>Login</MenuItem>
+									</NavLink>
+								) : (
+									<Typography variant="h6" className={classes.title}>
+										{users.displayName}
+									</Typography>
+								)}
 							</div>
 						</Drawer>
 					</div>

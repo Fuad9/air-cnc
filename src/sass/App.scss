@@ -1,0 +1,111 @@
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/classes";
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	@include theme(background-color, $color-light-bg, $color-dark-bg);
+	@include theme(color, $color-dark, $color-light);
+
+	font: {
+		family: $font-base-family;
+		size: $font-base-size;
+	}
+
+	h1 {
+		font-size: $font-largest-size;
+	}
+	h2 {
+		font-size: $font-second-size;
+	}
+	h3 {
+		font-size: $font-third-size;
+	}
+	h4 {
+		font-size: $font-fourth-size;
+	}
+	h5 {
+		font-size: $font-fifth-size;
+	}
+	h6 {
+		font-size: $font-base-size;
+	}
+	p {
+		font-size: $font-smallest-size;
+	}
+
+	button,
+	input,
+	textarea {
+		@extend .button-inputField-style;
+	}
+
+	section {
+		padding: 4rem 0;
+	}
+
+	.container {
+		margin-inline: auto;
+		width: #{"min(90%, 70.5rem)"};
+
+		.split {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	@media (min-width: 48em) {
+		.split {
+			flex-direction: row !important;
+		}
+
+		.split > * {
+			flex-basis: 100%;
+		}
+
+		.split > * + * {
+			margin-left: 2em;
+		}
+	}
+
+	.date-picker {
+		display: flex;
+		align-items: center;
+		font-size: 1.125rem;
+
+		.input-date {
+			text-align: center;
+			padding: 1.5rem;
+			display: flex;
+			align-items: center;
+
+			img {
+				padding-top: 1rem;
+				padding-left: 1rem;
+			}
+		}
+	}
+}
+
+.footer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	color: theme(color, $color-dark, $color-light);
+	height: 40px;
+	border-top: 1px solid $color-dark-border;
+	padding: 0 10px;
+	.item:last-of-type {
+		text-align: right;
+	}
+	span {
+		color: $color-danger;
+	}
+}

@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 const firebaseConfig = {
 	apiKey: "AIzaSyDBtDFmw6aEk9_p0gddXIv8rc7ZrRwhXkQ",
 	authDomain: "air-cnc-eeaa2.firebaseapp.com",
@@ -9,6 +7,4 @@ const firebaseConfig = {
 	appId: "1:401112299798:web:9c9ee1dfc8e2101a3ff837",
 };
 
-firebase.initializeApp(firebaseConfig);
-
-export default firebase;
+export default firebaseConfig;

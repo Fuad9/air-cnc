@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.scss";
+import "./sass/App.scss";
 import Routes from "./components/Routes";
 
 function App() {

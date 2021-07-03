@@ -15,7 +15,7 @@ const Hotels = () => {
 	const styles = {
 		textStyle: {
 			textDecoration: "none",
-			color: "#000",
+			color: "#fff",
 		},
 	};
 

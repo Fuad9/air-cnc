@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import Hotels from "../pages/Hotels/Hotels";
 import ProcessPayment from "../pages/Payment/PaymentForm";
 import PlaceDetails from "../pages/PlaceDetails/PlaceDetails";
+import PrivateRoute from "./PrivateRoute";
 import Tabs from "./Tabs";
 
 const Routes = () => {
@@ -19,7 +20,10 @@ const Routes = () => {
 					<Route path="/hotels" component={Hotels} />
 					<Route path="/tabs/houseRules" component={Tabs} />
 					<Route path="/tabs/guestProfile" component={GuestProfile} />
-					<Route path="/tabs/payment" component={ProcessPayment} />
+					<PrivateRoute path="/tabs/payment">
+						<ProcessPayment />
+					</PrivateRoute>
+					{/* <Route path="/tabs/payment" component={ProcessPayment} /> */}
 					<Route path="/auth" component={Auth} />
 				</Switch>
 			</Router>

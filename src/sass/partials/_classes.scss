@@ -1,0 +1,39 @@
+.scoop {
+	width: 100px;
+	height: 80px;
+	border-radius: 100%;
+	position: relative;
+	margin-bottom: -45px;
+	z-index: 3;
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 10px;
+		left: -10px;
+		height: 35px;
+		width: 120px;
+		border-radius: 100%;
+		z-index: 2;
+	}
+	&:first-of-type {
+		margin-bottom: 0;
+	}
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
+.button-inputField-style {
+	background-image: linear-gradient(90deg, #2bde8c, #51e66d);
+	@include bordered(1px, transparent);
+	padding: $base-size;
+	font-size: $font-base-size;
+	border-radius: $base-size;
+	outline: none;
+
+	&:hover {
+		background: transparent;
+		@include bordered(1px, $color-success);
+		color: $color-light;
+	}
+}
