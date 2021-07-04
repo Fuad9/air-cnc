@@ -1,46 +1,52 @@
-.search-area {
-	input {
-		border: none;
-		outline: none;
-	}
-}
+@import "../../sass/partials/variables";
+@import "../../sass/partials/mixins";
 
 .guest-count {
-	font-weight: bold;
+  font-weight: bold;
 
-	> div {
-		margin-bottom: 0.7rem;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+  > div {
+    margin-bottom: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-	.btn-action {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+    > h4 > i {
+      color: $color-success;
+    }
+  }
 
-		img {
-			cursor: pointer;
-		}
+  .btn-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-		span {
-			margin: 0.5rem;
-			font-size: 1.3rem;
-		}
-	}
+    img {
+      cursor: pointer;
+      @include bordered(border, 1px, $color-success);
+      border-radius: 50%;
 
-	.submit-btn {
-		display: flex;
-		justify-content: flex-end;
+      &:nth-child(1) {
+        padding: 0.9rem 0.5rem;
+      }
 
-		button {
-			border: 1px solid #2bde8c;
-			border-radius: 0.8rem;
-			color: #2bde8c;
-			text-transform: uppercase;
-			padding: 0.8rem 1.8rem;
-			background: transparent;
-		}
-	}
+      &:nth-child(3) {
+        padding: 0.5rem;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+        transition: all 1s;
+      }
+    }
+
+    span {
+      margin: 0.5rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  .submit-btn {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

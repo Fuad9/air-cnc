@@ -10,25 +10,25 @@ import PrivateRoute from "./PrivateRoute";
 import Tabs from "./Tabs";
 
 const Routes = () => {
-	return (
-		<>
-			<Router>
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/home" component={Home} />
-					<Route path="/placeDetails" component={PlaceDetails} />
-					<Route path="/hotels" component={Hotels} />
-					<Route path="/tabs/houseRules" component={Tabs} />
-					<Route path="/tabs/guestProfile" component={GuestProfile} />
-					<PrivateRoute path="/tabs/payment">
-						<ProcessPayment />
-					</PrivateRoute>
-					{/* <Route path="/tabs/payment" component={ProcessPayment} /> */}
-					<Route path="/auth" component={Auth} />
-				</Switch>
-			</Router>
-		</>
-	);
+  return (
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="/placeDetails" component={PlaceDetails} />
+          <Route path="/hotels" component={Hotels} />
+          <Route path="/tabs/houseRules" component={Tabs} />
+          <Route path="/tabs/guestProfile" component={GuestProfile} />
+          <PrivateRoute path="/tabs/payment">
+            <ProcessPayment />
+          </PrivateRoute>
+          {/* <Route path="/tabs/payment" component={ProcessPayment} /> */}
+          <Route path="/auth" component={Auth} />
+        </Switch>
+      </Router>
+    </>
+  );
 };
 
 export default Routes;

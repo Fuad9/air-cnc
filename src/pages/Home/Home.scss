@@ -1,17 +1,17 @@
-@mixin imgSizer {
-	img {
-		max-width: 100%;
-	}
+@mixin imgSize {
+  img {
+    max-width: 100%;
+  }
 }
 
 .experiences-data-container {
-	.experiences-data {
-		@include imgSizer;
-	}
+  .experiences-data {
+    @include imgSize;
+  }
 }
 
 .homes-data-container {
-	.homes-data {
-		@include imgSizer;
-	}
+  .homes-data {
+    @include imgSize;
+  }
 }

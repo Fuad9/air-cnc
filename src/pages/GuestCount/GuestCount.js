@@ -43,7 +43,6 @@ const GuestCount = () => {
         <h4 className="text-uppercase">location</h4>
         <Autocomplete
           id="country-select-demo"
-          style={{ width: 300 }}
           options={countriesData}
           autoHighlight
           getOptionLabel={(option) => option.label}
@@ -78,7 +77,7 @@ const GuestCount = () => {
       </div>
 
       <div className="guest-count shadow p-5">
-        <h4>Guests</h4>
+        <h2 className="text-center">Guests</h2>
         <span className="d-flex">
           <h4>
             <span>{state.adultsCount}</span> Adults
@@ -94,7 +93,9 @@ const GuestCount = () => {
         </span>
 
         <div>
-          <h4>Adults</h4>
+          <h4>
+            <i class="fas fa-male"></i> Adults
+          </h4>
           <div className="btn-action">
             <img
               onClick={() => {
@@ -121,7 +122,9 @@ const GuestCount = () => {
         </div>
 
         <div>
-          <h4>Childs</h4>
+          <h4>
+            <i class="fas fa-child"></i> Childs
+          </h4>
           <div className="btn-action">
             <img
               onClick={() => {
@@ -148,7 +151,9 @@ const GuestCount = () => {
         </div>
 
         <div>
-          <h4>Babies</h4>
+          <h4>
+            <i class="fas fa-baby"></i> Babies
+          </h4>
           <div className="btn-action">
             <img
               onClick={() => {
