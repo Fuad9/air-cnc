@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-// import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -11,30 +11,32 @@ import rootReducer from "./store/reducers/rootReducer";
 let intialState = {};
 
 try {
-	intialState = sessionStorage.getItem("authUser")
-		? JSON.parse(sessionStorage.getItem("authUser"))
-		: {};
+  intialState = sessionStorage.getItem("authUser")
+    ? JSON.parse(sessionStorage.getItem("authUser"))
+    : {};
 } catch (error) {
-	console.log("getError", error);
+  console.log("getError", error);
 }
 
 const saver = (store) => (next) => (action) => {
-	let result = next(action);
-	let stateToSave = store.getState();
-	sessionStorage.setItem("authUser", JSON.stringify({ ...stateToSave }));
-	return result;
+  let result = next(action);
+  let stateToSave = store.getState();
+  sessionStorage.setItem("authUser", JSON.stringify({ ...stateToSave }));
+  return result;
 };
 
-// const queryClient = new QueryClient();
+const queryClient = new QueryClient();
 const store = createStore(
-	rootReducer,
-	intialState,
-	composeWithDevTools(applyMiddleware(thunk, saver))
+  rootReducer,
+  intialState,
+  composeWithDevTools(applyMiddleware(thunk, saver))
 );
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById("root")
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </Provider>,
+  document.getElementById("root")
 );

@@ -1,25 +1,35 @@
+@import "../../sass/partials/mixins";
+@import "../../sass/partials/variables";
+
 .hotels {
-	.features {
-		display: flex;
-		justify-content: space-between;
+  .features {
+    display: flex;
+    justify-content: space-between;
 
-		h6 {
-			border: 1px solid lightgray;
-			border-radius: 2rem;
-			padding: 0.6rem;
-			cursor: pointer;
-		}
-	}
+    h6 {
+      @include bordered(border, 1px, $color-light);
+      border-radius: 2rem;
+      padding: 0.6rem;
+      cursor: pointer;
+    }
+  }
 
-	.hotel-list {
-		display: flex;
-		// align-items: center;
-		border-bottom: 1px solid lightgray;
-		margin: 1rem 0;
-		padding: 1rem 0;
+  .hotel-list {
+    display: flex;
+    @include bordered(border-bottom, 1px, $color-light);
+    margin: 1rem 0;
+    padding: 1rem 0;
 
-		img {
-			margin-right: 1rem;
-		}
-	}
+    img {
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+        transition: all 1s;
+        overflow: hidden;
+      }
+    }
+  }
 }

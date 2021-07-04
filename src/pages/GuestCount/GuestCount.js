@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 //utilities
 import { addToDatabase } from "../../utilities/storageManager";
 //components
@@ -10,142 +12,191 @@ import "./GuestCount.scss";
 import minus from "../../images/photos/minus-outline.png";
 import plus from "../../images/photos/plus-outline.png";
 import search from "../../images/photos/search-outline.png";
-import { Link } from "react-router-dom";
 import calendar from "../../images/photos/calendar-outline.png";
+import TextField from "@material-ui/core/TextField";
+import { countriesData } from "../../Data/countriesData";
 
 const GuestCount = () => {
-	const [adultsCount, setAdultsCount] = useState(0);
-	const [childsCount, setChildsCount] = useState(0);
-	const [babiesCount, setBabiesCount] = useState(0);
+  const [state, setCounters] = useState({
+    adultsCount: 0,
+    childsCount: 0,
+    babiesCount: 0,
+  });
 
-	const IncrementAdults = () => {
-		setAdultsCount(adultsCount + 1);
-	};
+  /* Saving user data in the localStorage ====================== */
+  const handleAddGuests = (key, value) => {
+    addToDatabase(key, value);
+  };
 
-	const IncrementChilds = () => {
-		setChildsCount(childsCount + 1);
-	};
+  const handleAddChilds = (key, value) => {
+    addToDatabase(key, value);
+  };
 
-	const IncrementBabies = () => {
-		setBabiesCount(babiesCount + 1);
-	};
+  const handleAddBabies = (key, value) => {
+    addToDatabase(key, value);
+  };
 
-	const DecreaseAdults = () => {
-		setAdultsCount(adultsCount - 1);
-	};
+  return (
+    <>
+      <h3>Where do you want to go</h3>
+      <div className="search-area mt-5">
+        <h4 className="text-uppercase">location</h4>
+        <Autocomplete
+          id="country-select-demo"
+          style={{ width: 300 }}
+          options={countriesData}
+          autoHighlight
+          getOptionLabel={(option) => option.label}
+          renderOption={(option) => (
+            <React.Fragment>{option.label}</React.Fragment>
+          )}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Search by location..."
+              variant="outlined"
+              inputProps={{
+                ...params.inputProps,
+                autoComplete: "new-password",
+              }}
+            />
+          )}
+        />
+      </div>
 
-	const DecreaseChilds = () => {
-		setChildsCount(childsCount - 1);
-	};
+      <div className="my-5">
+        <div className="date-picker">
+          <div className="shadow input-date">
+            <StartingDate />
+            <img src={calendar} alt="" />
+          </div>
+          <div className="shadow input-date">
+            <EndingDate />
+            <img src={calendar} alt="" />
+          </div>
+        </div>
+      </div>
 
-	const DecreaseBabies = () => {
-		setBabiesCount(babiesCount - 1);
-	};
+      <div className="guest-count shadow p-5">
+        <h4>Guests</h4>
+        <span className="d-flex">
+          <h4>
+            <span>{state.adultsCount}</span> Adults
+          </h4>
+          ,
+          <h4>
+            <span>{state.childsCount}</span> Childs
+          </h4>
+          ,
+          <h4>
+            <span>{state.babiesCount}</span> Babies
+          </h4>
+        </span>
 
-	/* Saving user data in the localStorage ====================== */
-	const handleAddGuests = (key, value) => {
-		addToDatabase(key, value);
-	};
+        <div>
+          <h4>Adults</h4>
+          <div className="btn-action">
+            <img
+              onClick={() => {
+                setCounters({
+                  ...state,
+                  adultsCount:
+                    state.adultsCount > 0
+                      ? state.adultsCount - 1
+                      : state.adultsCount,
+                });
+              }}
+              src={minus}
+              alt=""
+            />
+            <span>{state.adultsCount}</span>
+            <img
+              onClick={() => {
+                setCounters({ ...state, adultsCount: state.adultsCount + 1 });
+              }}
+              src={plus}
+              alt=""
+            />
+          </div>
+        </div>
 
-	const handleAddChilds = (key, value) => {
-		addToDatabase(key, value);
-	};
+        <div>
+          <h4>Childs</h4>
+          <div className="btn-action">
+            <img
+              onClick={() => {
+                setCounters({
+                  ...state,
+                  childsCount:
+                    state.childsCount > 0
+                      ? state.childsCount - 1
+                      : state.childsCount,
+                });
+              }}
+              src={minus}
+              alt=""
+            />
+            <span>{state.childsCount}</span>
+            <img
+              onClick={() => {
+                setCounters({ ...state, childsCount: state.childsCount + 1 });
+              }}
+              src={plus}
+              alt=""
+            />
+          </div>
+        </div>
 
-	const handleAddBabies = (key, value) => {
-		addToDatabase(key, value);
-	};
+        <div>
+          <h4>Babies</h4>
+          <div className="btn-action">
+            <img
+              onClick={() => {
+                setCounters({
+                  ...state,
+                  babiesCount:
+                    state.babiesCount > 0
+                      ? state.babiesCount - 1
+                      : state.babiesCount,
+                });
+              }}
+              src={minus}
+              alt=""
+            />
+            <span>{state.babiesCount}</span>
+            <img
+              onClick={() => {
+                setCounters({ ...state, babiesCount: state.babiesCount + 1 });
+              }}
+              src={plus}
+              alt=""
+            />
+          </div>
+        </div>
 
-	return (
-		<>
-			<h3>Where do you want to go</h3>
-			<div className="search-area mt-5">
-				<h4 className="text-uppercase">location</h4>
-				<input
-					type="text"
-					className="shadow w-100 p-4"
-					placeholder="Add city, landmark or address"
-				/>
-			</div>
+        <div className="submit-btn">
+          <Link to="/placeDetails">
+            <button
+              onClick={() => {
+                handleAddGuests("adults", state.adultsCount);
+                handleAddChilds("childs", state.childsCount);
+                handleAddBabies("babies", state.babiesCount);
+              }}
+            >
+              Apply
+            </button>
+          </Link>
+        </div>
+      </div>
 
-			<div className="my-5">
-				<div className="date-picker">
-					<div className="shadow input-date">
-						<StartingDate />
-						<img src={calendar} alt="" />
-					</div>
-					<div className="shadow input-date">
-						<EndingDate />
-						<img src={calendar} alt="" />
-					</div>
-				</div>
-			</div>
-
-			<div className="guest-count shadow p-5">
-				<h4>Guests</h4>
-				<span className="d-flex">
-					<h4>
-						<span>{adultsCount}</span> Adults
-					</h4>
-					,
-					<h4>
-						<span>{childsCount}</span> Childs
-					</h4>
-					,
-					<h4>
-						<span>{babiesCount}</span> Babies
-					</h4>
-				</span>
-
-				<div>
-					<h4>Adults</h4>
-					<div className="btn-action">
-						<img onClick={DecreaseAdults} src={minus} alt="" />
-						<span>{adultsCount}</span>
-						<img onClick={IncrementAdults} src={plus} alt="" />
-					</div>
-				</div>
-
-				<div>
-					<h4>Childs</h4>
-					<div className="btn-action">
-						<img onClick={DecreaseChilds} src={minus} alt="" />
-						<span>{childsCount}</span>
-						<img onClick={IncrementChilds} src={plus} alt="" />
-					</div>
-				</div>
-
-				<div>
-					<h4>Babies</h4>
-					<div className="btn-action">
-						<img onClick={DecreaseBabies} src={minus} alt="" />
-						<span>{babiesCount}</span>
-						<img onClick={IncrementBabies} src={plus} alt="" />
-					</div>
-				</div>
-
-				<div className="submit-btn">
-					<Link to="/placeDetails">
-						<button
-							onClick={() => {
-								handleAddGuests("adults", adultsCount);
-								handleAddChilds("childs", childsCount);
-								handleAddBabies("babies", babiesCount);
-							}}
-						>
-							Apply
-						</button>
-					</Link>
-				</div>
-			</div>
-
-			<Link to="/hotels">
-				<button className="w-100">
-					<img src={search} alt="" />
-					Search
-				</button>
-			</Link>
-		</>
-	);
+      <Link to="/hotels">
+        <button className="w-100">
+          <img src={search} alt="" />
+          Search
+        </button>
+      </Link>
+    </>
+  );
 };
 
 export default GuestCount;

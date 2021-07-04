@@ -12,7 +12,7 @@ const getUser = () => {
 
 const getDataKey = () => {
 	const userId = getUser();
-	return `github/users/${userId}`;
+	return `guestCount/users/${userId}`;
 };
 
 /* pushing data to local storage: a temporary place for database ======================= */
